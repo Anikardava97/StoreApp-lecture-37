@@ -7,12 +7,46 @@
 
 import SwiftUI
 
-struct MainViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+final class MainViewModel: ObservableObject {
+    // MARK: - Properties
+    @Published private(set) var products: [Product] = []
+    @Published private(set) var cart: [Product] = []
+    @Published private(set) var error: String?
+    @Published private(set) var total: Int = 0
+    
+    // MARK: - Init
+    init() {
+        fetchProducts()
     }
-}
-
-#Preview {
-    MainViewModel()
+    
+    // MARK: - Network Call
+    func fetchProducts() {
+        let urlString = "https://dummyjson.com/products"
+        guard let URL = URL(string: urlString) else { return }
+        
+        NetworkManager.shared.fetchDecodableData(from: URL, responseType: ProductsData.self, completion: { result in
+            switch result {
+            case .success(let data):
+                self.products = data.products
+            case .failure(let error):
+                self.error = error.localizedDescription
+            }
+        })
+    }
+    
+    //MARK: - Methods
+    func totalBalance() -> some View {
+        Text("5000 $")
+            .font(.system(size: 24))
+            .foregroundStyle(.black)
+    }
+    
+    func addToCart(product: Product) {
+            self.cart.append(product)
+            self.updateTotal()
+    }
+    
+    private func updateTotal() {
+        total = cart.reduce(0) { $0 + $1.price }
+    }
 }

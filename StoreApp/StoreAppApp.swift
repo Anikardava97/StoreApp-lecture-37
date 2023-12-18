@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct StoreAppApp: App {
+    @StateObject var viewModel = MainViewModel()
+
     var body: some Scene {
         WindowGroup {
             AppTabBarView()
+                .environmentObject(viewModel)
         }
     }
 }
