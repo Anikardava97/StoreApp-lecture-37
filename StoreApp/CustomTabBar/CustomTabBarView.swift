@@ -24,7 +24,7 @@ struct CustomTabBarView: View {
     }
 }
 
-let tabs: [TabBarItem] = [.home, .categories, .products, .productDetails]
+let tabs: [TabBarItem] = [.home, .categories]
 
 #Preview {
     VStack {

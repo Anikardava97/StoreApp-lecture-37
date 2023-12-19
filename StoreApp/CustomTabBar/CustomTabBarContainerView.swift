@@ -31,7 +31,7 @@ struct CustomTabBarContainerView<Content: View>: View {
     }
 }
 
-let tab: [TabBarItem] = [.home, .categories, .products, .productDetails]
+let tab: [TabBarItem] = [.home, .categories]
 
 #Preview {
     CustomTabBarContainerView(selection: .constant(tab.first!)) {

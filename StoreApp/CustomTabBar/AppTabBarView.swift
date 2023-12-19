@@ -18,10 +18,6 @@ struct AppTabBarView: View {
                 .tabBarItem(tab: .home, selection: $tabSelection)
             CategoriesView()
                 .tabBarItem(tab: .categories, selection: $tabSelection)
-            ProductsView()
-                .tabBarItem(tab: .products, selection: $tabSelection)
-            ProductDetailView()
-                .tabBarItem(tab: .productDetails, selection: $tabSelection)
         }
     }
 }
@@ -42,19 +38,8 @@ extension AppTabBarView {
                 }
             CategoriesView()
                 .tabItem {
-                    Image(systemName: "list.bullet.rectangle.portrait")
-                    Text("Categories")
-                }
-            ProductsView()
-                .tabItem {
                     Image(systemName: "macbook.and.iphone")
-                    Text("Products")
-                }
-            
-            ProductDetailView()
-                .tabItem {
-                    Image(systemName: "doc.text.magnifyingglass")
-                    Text("Details")
+                    Text("Categories")
                 }
         }
     }
