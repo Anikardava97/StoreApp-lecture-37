@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+    
     // MARK: - Properties
     @EnvironmentObject var viewModel: MainViewModel
     private let spacing: CGFloat = 24
@@ -26,8 +27,7 @@ struct MainView: View {
         .background(Color(red: 26/255, green: 26/255, blue: 26/255))
     }
     
-    //MARK: - Products Grid
-    
+    //MARK: - Cart and Balance
     private var headerView: some View {
         HStack {
             Spacer()
@@ -71,6 +71,7 @@ struct MainView: View {
         }
     }
     
+    //MARK: - Products Grid
     private var navigationStack: some View {
         verticalScrollView
     }
@@ -92,31 +93,46 @@ struct MainView: View {
         .background(Color(red: 26/255, green: 26/255, blue: 26/255))
     }
     
+    //MARK: - Checkout Button
+    private var checkoutButton: some View {
+        PrimaryButtonComponentView(action: {
+            viewModel.checkout()
+        }, icon: ("checkout"), text: "Checkout")
+        .disabled(viewModel.cart.isEmpty)
+    }
+    
     private var primaryButton: some View {
         Group {
             if viewModel.isLoading {
                 ProgressView()
             } else {
-                PrimaryButtonComponentView(action: {
-                    viewModel.checkout()
-                }, icon: ("checkout"), text: "Checkout")
+                checkoutButton
             }
         }
-        .alert(item: $viewModel.alertType) { alertType in
-            switch alertType {
-            case .success:
-                return Alert(
-                    title: Text("Success 🥳"),
-                    message: Text("Purchase Successful!"),
-                    dismissButton: .default(Text("OK"))
-                )
-            case .error:
-                return Alert(
-                    title: Text("Insufficient Funds 🙁"),
-                    message: Text("Please, add more money to your balance"),
-                    dismissButton: .default(Text("OK"))
-                )
-            }
+        .alert(item: $viewModel.alertType) { _ in
+            checkoutAlert() ?? Alert(title: Text("Error"))
+        }
+    }
+    
+    //MARK: - Alert
+    private func checkoutAlert() -> Alert? {
+        guard let alertType = viewModel.alertType else {
+            return nil
+        }
+        
+        switch alertType {
+        case .success:
+            return Alert(
+                title: Text("Success 🥳"),
+                message: Text("Purchase Successful!"),
+                dismissButton: .default(Text("OK"))
+            )
+        case .error:
+            return Alert(
+                title: Text("Insufficient Funds 🙁"),
+                message: Text("Please, add more money to your balance"),
+                dismissButton: .default(Text("OK"))
+            )
         }
     }
 }

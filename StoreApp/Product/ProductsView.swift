@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct ProductsView: View {
+    
     // MARK: - Properties
     let category: String
     @EnvironmentObject var viewModel: MainViewModel
+    @Binding var path: NavigationPath
     @Environment(\.presentationMode) var presentationMode
     private let spacing: CGFloat = 24
     var columns = [
@@ -30,22 +32,10 @@ struct ProductsView: View {
         .navigationBarBackButtonHidden()
     }
     
-    //MARK: - Products Grid
-    private var customBackButton: some View {
-        Button(action: {
-            presentationMode.wrappedValue.dismiss()
-        }) {
-            HStack {
-                Image(systemName: "chevron.left")
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundColor(.white)
-            }
-        }
-    }
-    
+    //MARK: - Cart and Balance
     private var headerView: some View {
         HStack {
-            customBackButton
+            CustomBackButton(presentationMode: presentationMode, foregroundColor: .white)
             Spacer()
             CartButtonComponentView()
         }
@@ -87,6 +77,7 @@ struct ProductsView: View {
         }
     }
     
+    //MARK: - Products Grid
     private var verticalScrollView: some View {
         ScrollView {
             productGrid
@@ -104,11 +95,24 @@ struct ProductsView: View {
     private var productGrid: some View {
         LazyVGrid(columns: columns, spacing: spacing) {
             ForEach(viewModel.products.filter { $0.category == category }) { product in
-                ProductCardComponentView(product: product)
+                NavigationLink(value: product) {
+                    ProductCardComponentView(product: product)
+                }
             }
         }
         .padding(.horizontal, 24)
         .background(Color(red: 26/255, green: 26/255, blue: 26/255))
+        .navigationDestination(for: Product.self) { selectedProduct in
+            ProductDetailView(product: selectedProduct, path: $path)
+        }
+    }
+    
+    //MARK: - Checkout Button
+    private var checkoutButton: some View {
+        PrimaryButtonComponentView(action: {
+            viewModel.checkout()
+        }, icon: ("checkout"), text: "Checkout")
+        .disabled(viewModel.cart.isEmpty)
     }
     
     private var primaryButton: some View {
@@ -116,32 +120,40 @@ struct ProductsView: View {
             if viewModel.isLoading {
                 ProgressView()
             } else {
-                PrimaryButtonComponentView(action: {
-                    viewModel.checkout()
-                }, icon: ("checkout"), text: "Checkout")
+                checkoutButton
             }
         }
-        .alert(item: $viewModel.alertType) { alertType in
-            switch alertType {
-            case .success:
-                return Alert(
-                    title: Text("Success 🥳"),
-                    message: Text("Purchase Successful!"),
-                    dismissButton: .default(Text("OK"))
-                )
-            case .error:
-                return Alert(
-                    title: Text("Insufficient Funds 🙁"),
-                    message: Text("Please, add more money to your balance"),
-                    dismissButton: .default(Text("OK"))
-                )
-            }
+        .alert(item: $viewModel.alertType) { _ in
+            checkoutAlert() ?? Alert(title: Text("Error"))
+        }
+    }
+    
+    //MARK: - Alert
+    private func checkoutAlert() -> Alert? {
+        guard let alertType = viewModel.alertType else {
+            return nil
+        }
+        
+        switch alertType {
+        case .success:
+            return Alert(
+                title: Text("Success 🥳"),
+                message: Text("Purchase Successful!"),
+                dismissButton: .default(Text("OK"))
+            )
+        case .error:
+            return Alert(
+                title: Text("Insufficient Funds 🙁"),
+                message: Text("Please, add more money to your balance"),
+                dismissButton: .default(Text("OK"))
+            )
         }
     }
 }
 
+
 #Preview {
-    ProductsView(category: "groceries")
-    .environmentObject(MainViewModel())
+    ProductsView(category: "groceries", path: CategoriesView().$path)
+        .environmentObject(MainViewModel())
 }
 

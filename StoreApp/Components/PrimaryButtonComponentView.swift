@@ -11,7 +11,7 @@ struct PrimaryButtonComponentView: View {
     var action: () -> Void
     var icon: String
     var text: String
-
+    
     var body: some View {
         Button(action: action) {
             HStack(spacing: 8) {

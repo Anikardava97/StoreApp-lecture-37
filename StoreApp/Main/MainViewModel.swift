@@ -8,6 +8,7 @@
 import SwiftUI
 
 final class MainViewModel: ObservableObject {
+    
     // MARK: - Properties
     @Published private(set) var products: [Product] = []
     @Published private(set) var cart: [Product] = []
@@ -27,7 +28,7 @@ final class MainViewModel: ObservableObject {
     }
     
     // MARK: - Network Call
-    func fetchProducts() {
+    private func fetchProducts() {
         let urlString = "https://dummyjson.com/products"
         guard let URL = URL(string: urlString) else { return }
         
@@ -72,10 +73,6 @@ final class MainViewModel: ObservableObject {
                 self.alertType = .error
             }
         }
-    }
-    
-    func resetPurchaseAmount() {
-        purchaseAmount = 0
     }
 }
 

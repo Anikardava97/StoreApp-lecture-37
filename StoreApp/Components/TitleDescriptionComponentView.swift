@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TitleDescriptionComponentView: View {
     
+    // MARK: - Properties
     var title: String
     var titleFont: CGFloat
     var titleWeight: Font.Weight
@@ -18,6 +19,7 @@ struct TitleDescriptionComponentView: View {
     var price: Int
     var priceFont: Int
     
+    // MARK: - Body
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(title)

@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct CartButtonComponentView: View {
+    
+    // MARK: - Properties
     @EnvironmentObject var viewModel: MainViewModel
     
+    // MARK: - Body
     var body: some View {
         VStack {
             ZStack(alignment: .topTrailing) {
@@ -28,6 +31,7 @@ struct CartButtonComponentView: View {
                         .cornerRadius(50)
                 }
             }
+            
             if viewModel.cart.count > 0 {
                 Text("\(viewModel.purchaseAmount)$")
                     .font(.system(size: 12))

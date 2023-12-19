@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct CategoryCardView: View {
+    
     // MARK: - Properties
     var category: String
     
+    // MARK: - Body
     var body: some View {
         HStack(spacing: 12) {
             categoryIcon(category)

@@ -5,14 +5,7 @@
 //  Created by Ani's Mac on 17.12.23.
 //
 
-import Foundation
 import SwiftUI
-
-//struct TabBarItem: Hashable {
-//    let iconName: String
-//    let title: String
-//    let color: Color
-//}
 
 enum TabBarItem: Hashable {
     case home, categories

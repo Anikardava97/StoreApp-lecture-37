@@ -9,11 +9,14 @@ import SwiftUI
 
 
 struct CategoriesView: View {
-    @EnvironmentObject var viewModel: MainViewModel
-    @State private var path = NavigationPath()
     
+    // MARK: - Properties
+    @EnvironmentObject var viewModel: MainViewModel
+    @State var path = NavigationPath()
+    
+    // MARK: - Body
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             List(viewModel.uniqueCategories, id: \.self) { category in
                 NavigationLink(value: category) {
                     CategoryCardView(category: category)
@@ -22,7 +25,7 @@ struct CategoriesView: View {
             .listStyle(.plain)
             .navigationTitle("Categories")
             .navigationDestination(for: String.self) { category in
-                ProductsView(category: category)
+                ProductsView(category: category, path: $path)
             }
         }
     }

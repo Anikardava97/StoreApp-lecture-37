@@ -17,17 +17,17 @@ struct CustomTabBarContainerView<Content: View>: View {
         self._selection = selection
         self.content = content()
     }
-
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             content
-
+            
             CustomTabBarView(tabs: tabs, selection: $selection, localSelection: selection)
-
+            
         }
-            .onPreferenceChange(TabBarItemsPreferenceKey.self) { value in
-                self.tabs = value
-            }
+        .onPreferenceChange(TabBarItemsPreferenceKey.self) { value in
+            self.tabs = value
+        }
     }
 }
 

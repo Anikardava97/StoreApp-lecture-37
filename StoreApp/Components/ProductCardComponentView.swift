@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct ProductCardComponentView: View {
+    
     // MARK: - Properties
     @EnvironmentObject var viewModel: MainViewModel
     var product: Product
     
+    // MARK: - Body
     var body: some View {
         ZStack(alignment: .topTrailing) {
             VStack(spacing: 0) {
@@ -26,6 +28,7 @@ struct ProductCardComponentView: View {
         }
     }
     
+    // MARK: - Add Button
     private var addButton: some View {
         Button {
             viewModel.addToCart(product: product)

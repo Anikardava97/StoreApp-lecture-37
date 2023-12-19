@@ -5,7 +5,6 @@
 //  Created by Ani's Mac on 17.12.23.
 //
 
-import Foundation
 import SwiftUI
 
 struct TabBarItemsPreferenceKey: PreferenceKey {
@@ -32,6 +31,6 @@ struct TabBarItemViewModifier: ViewModifier {
 extension View {
     
     func tabBarItem(tab: TabBarItem, selection: Binding<TabBarItem>) -> some View {
-            modifier(TabBarItemViewModifier(tab: tab, selection: selection))
+        modifier(TabBarItemViewModifier(tab: tab, selection: selection))
     }
 }

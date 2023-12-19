@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EE07B3F72B312C2A0076C4EE /* CategoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE07B3F62B312C2A0076C4EE /* CategoryCardView.swift */; };
 		EE07B3FD2B316ACB0076C4EE /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE07B3FC2B316ACB0076C4EE /* AlertType.swift */; };
+		EE07B4032B319D7B0076C4EE /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE07B4022B319D7B0076C4EE /* CustomBackButton.swift */; };
 		EE713ED92B2FB78800FCB07C /* StoreAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE713ED82B2FB78800FCB07C /* StoreAppApp.swift */; };
 		EE713EDD2B2FB78A00FCB07C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE713EDC2B2FB78A00FCB07C /* Assets.xcassets */; };
 		EE713EE02B2FB78A00FCB07C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE713EDF2B2FB78A00FCB07C /* Preview Assets.xcassets */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		EE07B3F62B312C2A0076C4EE /* CategoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCardView.swift; sourceTree = "<group>"; };
 		EE07B3FC2B316ACB0076C4EE /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
+		EE07B4022B319D7B0076C4EE /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
 		EE713ED52B2FB78800FCB07C /* StoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE713ED82B2FB78800FCB07C /* StoreAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAppApp.swift; sourceTree = "<group>"; };
 		EE713EDC2B2FB78A00FCB07C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -173,11 +175,12 @@
 			isa = PBXGroup;
 			children = (
 				EE713F0F2B2FEFB900FCB07C /* ProductCardComponentView.swift */,
-				EE07B3F62B312C2A0076C4EE /* CategoryCardView.swift */,
-				EE713F182B30EF1C00FCB07C /* PrimaryButtonComponentView.swift */,
-				EE713F122B2FF5C000FCB07C /* TitleDescriptionComponentView.swift */,
 				EE713F162B30379B00FCB07C /* CartButtonComponentView.swift */,
+				EE07B3F62B312C2A0076C4EE /* CategoryCardView.swift */,
+				EE713F122B2FF5C000FCB07C /* TitleDescriptionComponentView.swift */,
+				EE713F182B30EF1C00FCB07C /* PrimaryButtonComponentView.swift */,
 				EE07B3FC2B316ACB0076C4EE /* AlertType.swift */,
+				EE07B4022B319D7B0076C4EE /* CustomBackButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE713F0A2B2FED1A00FCB07C /* ProductModel.swift in Sources */,
+				EE07B4032B319D7B0076C4EE /* CustomBackButton.swift in Sources */,
 				EE713EF62B2FCA0B00FCB07C /* CustomTabBarView.swift in Sources */,
 				EE713F192B30EF1C00FCB07C /* PrimaryButtonComponentView.swift in Sources */,
 				EE713F102B2FEFB900FCB07C /* ProductCardComponentView.swift in Sources */,

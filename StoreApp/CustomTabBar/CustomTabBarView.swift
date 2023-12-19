@@ -19,8 +19,8 @@ struct CustomTabBarView: View {
             .onChange(of: selection) { value in
                 withAnimation(.easeInOut) {
                     localSelection = value
+                }
             }
-        }
     }
 }
 
