@@ -21,11 +21,11 @@ struct MainView: View {
         VStack(spacing: 0) {
             headerView
             balanceView
-            navigationStack
+            verticalScrollView
         }
         .background(Color(red: 26/255, green: 26/255, blue: 26/255))
     }
-        
+    
     //MARK: - Products Grid
     var headerView: some View {
         HStack {
@@ -47,10 +47,10 @@ struct MainView: View {
         .padding(.vertical, 24)
         .background(.white)
         .cornerRadius(12)
-            .frame(height: 140)
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal, 24)
-        }
+        .frame(height: 140)
+        .frame(maxWidth: .infinity)
+        .padding(.horizontal, 24)
+    }
     
     private var balanceInfo: some View {
         HStack {
@@ -69,16 +69,11 @@ struct MainView: View {
         }
     }
     
-    private var navigationStack: some View {
-        NavigationStack {
-            verticalScrollView
-        }
-    }
-    
     private var verticalScrollView: some View {
         ScrollView {
             productGrid
         }
+        .background(Color(red: 26/255, green: 26/255, blue: 26/255))
     }
     
     private var productGrid: some View {
@@ -92,9 +87,29 @@ struct MainView: View {
     }
     
     private var primaryButton: some View {
-        PrimaryButtonComponentView(action: {
-            print("123")
-        }, icon: ("checkout"), text: "Checkout")
+        Group {
+            if viewModel.isLoading {
+                ProgressView()
+            } else {
+                PrimaryButtonComponentView(action: {
+                    viewModel.checkout()
+                }, icon: ("checkout"), text: "Checkout")
+            }
+        }
+        .alert(isPresented: $viewModel.isShowingSuccessAlert) {
+            return Alert(
+                title: Text("Success 🥳"),
+                message: Text("Purchase Successful!"),
+                dismissButton: .default(Text("OK"))
+            )
+        }
+        .alert(isPresented: $viewModel.isShowingErrorAlert) {
+            return Alert(
+                title: Text("Insufficient Funds 🙁"),
+                message: Text("Please, add more money to your balance"),
+                dismissButton: .default(Text("OK"))
+            )
+        }
     }
 }
 

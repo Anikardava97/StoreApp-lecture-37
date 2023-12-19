@@ -12,7 +12,11 @@ final class MainViewModel: ObservableObject {
     @Published private(set) var products: [Product] = []
     @Published private(set) var cart: [Product] = []
     @Published private(set) var error: String?
-    @Published private(set) var total: Int = 0
+    @Published private(set) var purchaseAmount: Int = 0
+    @Published private(set) var userBalance: Int = 5000
+    @Published private(set) var isLoading: Bool = false
+    @Published var isShowingSuccessAlert = false
+    @Published var isShowingErrorAlert = false
     
     // MARK: - Init
     init() {
@@ -36,17 +40,38 @@ final class MainViewModel: ObservableObject {
     
     //MARK: - Methods
     func totalBalance() -> some View {
-        Text("5000 $")
+        return Text("\(userBalance)$")
             .font(.system(size: 24))
             .foregroundStyle(.black)
     }
     
     func addToCart(product: Product) {
-            self.cart.append(product)
-            self.updateTotal()
+        self.cart.append(product)
+        self.updateTotal()
     }
     
     private func updateTotal() {
-        total = cart.reduce(0) { $0 + $1.price }
+        purchaseAmount = cart.reduce(0) { $0 + $1.price }
+    }
+    
+    func checkout() {
+        isLoading = true
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.isLoading = false
+            
+            if self.userBalance >= self.purchaseAmount {
+                self.userBalance -= self.purchaseAmount
+                self.cart.removeAll()
+                self.isShowingSuccessAlert = true
+            } else {
+                self.isShowingErrorAlert = true
+            }
+        }
+    }
+    
+    func resetPurchaseAmount() {
+        purchaseAmount = 0
     }
 }
+

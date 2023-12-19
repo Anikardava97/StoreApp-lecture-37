@@ -28,10 +28,11 @@ struct CartButtonComponentView: View {
                         .cornerRadius(50)
                 }
             }
-            
-            Text("\(viewModel.total)$")
-                .font(.system(size: 12))
-                .foregroundStyle(.white)
+            if viewModel.cart.count > 0 {
+                Text("\(viewModel.purchaseAmount)$")
+                    .font(.system(size: 12))
+                    .foregroundStyle(.white)
+            }
         }
         .frame(width: 60, height: 60)
         .padding(.trailing, 24)
