@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ProductCardComponentView: View {
-    // MARK: - Components
+    // MARK: - Properties
     @EnvironmentObject var viewModel: MainViewModel
-    var  product: Product
+    var product: Product
     
     var body: some View {
         ZStack(alignment: .topTrailing) {

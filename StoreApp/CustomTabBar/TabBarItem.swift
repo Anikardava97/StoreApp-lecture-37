@@ -33,8 +33,8 @@ enum TabBarItem: Hashable {
     
     var color: Color {
         switch self {
-        case .home: return Color(hue: 1.0, saturation: 0.89, brightness: 0.835)
-        case .categories: return Color(hue: 1.0, saturation: 0.89, brightness: 0.835)
+        case .home: return Color(.black)
+        case .categories: return Color(.black)
         }
     }
 }

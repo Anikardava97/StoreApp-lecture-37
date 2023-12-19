@@ -15,8 +15,11 @@ final class MainViewModel: ObservableObject {
     @Published private(set) var purchaseAmount: Int = 0
     @Published private(set) var userBalance: Int = 5000
     @Published private(set) var isLoading: Bool = false
-    @Published var isShowingSuccessAlert = false
-    @Published var isShowingErrorAlert = false
+    @Published var alertType: AlertType?
+    
+    var uniqueCategories: [String] {
+        Set(products.map { $0.category }).sorted()
+    }
     
     // MARK: - Init
     init() {
@@ -55,6 +58,7 @@ final class MainViewModel: ObservableObject {
     }
     
     func checkout() {
+        if cart.isEmpty { return }
         isLoading = true
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
@@ -63,9 +67,9 @@ final class MainViewModel: ObservableObject {
             if self.userBalance >= self.purchaseAmount {
                 self.userBalance -= self.purchaseAmount
                 self.cart.removeAll()
-                self.isShowingSuccessAlert = true
+                self.alertType = .success
             } else {
-                self.isShowingErrorAlert = true
+                self.alertType = .error
             }
         }
     }

@@ -35,7 +35,6 @@ struct CartButtonComponentView: View {
             }
         }
         .frame(width: 60, height: 60)
-        .padding(.trailing, 24)
     }
 }
 

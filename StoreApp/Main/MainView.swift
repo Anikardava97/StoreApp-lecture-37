@@ -11,7 +11,7 @@ struct MainView: View {
     // MARK: - Properties
     @EnvironmentObject var viewModel: MainViewModel
     private let spacing: CGFloat = 24
-    var columns = [
+    private var columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
@@ -21,20 +21,22 @@ struct MainView: View {
         VStack(spacing: 0) {
             headerView
             balanceView
-            verticalScrollView
+            navigationStack
         }
         .background(Color(red: 26/255, green: 26/255, blue: 26/255))
     }
     
     //MARK: - Products Grid
-    var headerView: some View {
+    
+    private var headerView: some View {
         HStack {
             Spacer()
             CartButtonComponentView()
         }
+        .padding(.trailing, 24)
     }
     
-    var balanceView: some View {
+    private var balanceView: some View {
         HStack {
             VStack(spacing: 4) {
                 balanceInfo
@@ -69,6 +71,10 @@ struct MainView: View {
         }
     }
     
+    private var navigationStack: some View {
+        verticalScrollView
+    }
+    
     private var verticalScrollView: some View {
         ScrollView {
             productGrid
@@ -96,19 +102,21 @@ struct MainView: View {
                 }, icon: ("checkout"), text: "Checkout")
             }
         }
-        .alert(isPresented: $viewModel.isShowingSuccessAlert) {
-            return Alert(
-                title: Text("Success 🥳"),
-                message: Text("Purchase Successful!"),
-                dismissButton: .default(Text("OK"))
-            )
-        }
-        .alert(isPresented: $viewModel.isShowingErrorAlert) {
-            return Alert(
-                title: Text("Insufficient Funds 🙁"),
-                message: Text("Please, add more money to your balance"),
-                dismissButton: .default(Text("OK"))
-            )
+        .alert(item: $viewModel.alertType) { alertType in
+            switch alertType {
+            case .success:
+                return Alert(
+                    title: Text("Success 🥳"),
+                    message: Text("Purchase Successful!"),
+                    dismissButton: .default(Text("OK"))
+                )
+            case .error:
+                return Alert(
+                    title: Text("Insufficient Funds 🙁"),
+                    message: Text("Please, add more money to your balance"),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
         }
     }
 }

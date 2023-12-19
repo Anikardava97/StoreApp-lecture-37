@@ -12,7 +12,7 @@ struct ProductsData: Decodable {
     let total, skip, limit: Int
 }
 
-struct Product: Decodable, Identifiable {
+struct Product: Decodable, Identifiable, Hashable {
     let id: Int
     let title, description: String
     let price: Int

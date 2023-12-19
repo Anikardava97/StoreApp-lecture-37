@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE07B3F72B312C2A0076C4EE /* CategoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE07B3F62B312C2A0076C4EE /* CategoryCardView.swift */; };
+		EE07B3FD2B316ACB0076C4EE /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE07B3FC2B316ACB0076C4EE /* AlertType.swift */; };
 		EE713ED92B2FB78800FCB07C /* StoreAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE713ED82B2FB78800FCB07C /* StoreAppApp.swift */; };
 		EE713EDD2B2FB78A00FCB07C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE713EDC2B2FB78A00FCB07C /* Assets.xcassets */; };
 		EE713EE02B2FB78A00FCB07C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE713EDF2B2FB78A00FCB07C /* Preview Assets.xcassets */; };
@@ -20,9 +22,6 @@
 		EE713EFA2B2FDB1700FCB07C /* TabBarItemsPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE713EF92B2FDB1700FCB07C /* TabBarItemsPreferenceKey.swift */; };
 		EE713EFC2B2FDE4700FCB07C /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE713EFB2B2FDE4700FCB07C /* TabBarItem.swift */; };
 		EE713EFF2B2FECD100FCB07C /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE713EFE2B2FECD100FCB07C /* MainViewModel.swift */; };
-		EE713F022B2FECE100FCB07C /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE713F012B2FECE100FCB07C /* CategoriesViewModel.swift */; };
-		EE713F052B2FECFC00FCB07C /* ProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE713F042B2FECFC00FCB07C /* ProductsViewModel.swift */; };
-		EE713F082B2FED1100FCB07C /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE713F072B2FED1100FCB07C /* ProductDetailViewModel.swift */; };
 		EE713F0A2B2FED1A00FCB07C /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE713F092B2FED1A00FCB07C /* ProductModel.swift */; };
 		EE713F0D2B2FED2A00FCB07C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE713F0C2B2FED2A00FCB07C /* NetworkManager.swift */; };
 		EE713F102B2FEFB900FCB07C /* ProductCardComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE713F0F2B2FEFB900FCB07C /* ProductCardComponentView.swift */; };
@@ -32,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE07B3F62B312C2A0076C4EE /* CategoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCardView.swift; sourceTree = "<group>"; };
+		EE07B3FC2B316ACB0076C4EE /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 		EE713ED52B2FB78800FCB07C /* StoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE713ED82B2FB78800FCB07C /* StoreAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAppApp.swift; sourceTree = "<group>"; };
 		EE713EDC2B2FB78A00FCB07C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -46,9 +47,6 @@
 		EE713EF92B2FDB1700FCB07C /* TabBarItemsPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemsPreferenceKey.swift; sourceTree = "<group>"; };
 		EE713EFB2B2FDE4700FCB07C /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		EE713EFE2B2FECD100FCB07C /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		EE713F012B2FECE100FCB07C /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
-		EE713F042B2FECFC00FCB07C /* ProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModel.swift; sourceTree = "<group>"; };
-		EE713F072B2FED1100FCB07C /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
 		EE713F092B2FED1A00FCB07C /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		EE713F0C2B2FED2A00FCB07C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		EE713F0F2B2FEFB900FCB07C /* ProductCardComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCardComponentView.swift; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 			isa = PBXGroup;
 			children = (
 				EE713EE82B2FC12200FCB07C /* CategoriesView.swift */,
-				EE713F012B2FECE100FCB07C /* CategoriesViewModel.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -144,7 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				EE713EEA2B2FC12F00FCB07C /* ProductsView.swift */,
-				EE713F042B2FECFC00FCB07C /* ProductsViewModel.swift */,
 			);
 			path = Product;
 			sourceTree = "<group>";
@@ -153,7 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				EE713EEC2B2FC13F00FCB07C /* ProductDetailView.swift */,
-				EE713F072B2FED1100FCB07C /* ProductDetailViewModel.swift */,
 			);
 			path = ProductDetail;
 			sourceTree = "<group>";
@@ -178,9 +173,11 @@
 			isa = PBXGroup;
 			children = (
 				EE713F0F2B2FEFB900FCB07C /* ProductCardComponentView.swift */,
+				EE07B3F62B312C2A0076C4EE /* CategoryCardView.swift */,
 				EE713F182B30EF1C00FCB07C /* PrimaryButtonComponentView.swift */,
 				EE713F122B2FF5C000FCB07C /* TitleDescriptionComponentView.swift */,
 				EE713F162B30379B00FCB07C /* CartButtonComponentView.swift */,
+				EE07B3FC2B316ACB0076C4EE /* AlertType.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -263,9 +260,9 @@
 				EE713EFC2B2FDE4700FCB07C /* TabBarItem.swift in Sources */,
 				EE713F0D2B2FED2A00FCB07C /* NetworkManager.swift in Sources */,
 				EE713F172B30379B00FCB07C /* CartButtonComponentView.swift in Sources */,
+				EE07B3F72B312C2A0076C4EE /* CategoryCardView.swift in Sources */,
 				EE713F132B2FF5C000FCB07C /* TitleDescriptionComponentView.swift in Sources */,
-				EE713F082B2FED1100FCB07C /* ProductDetailViewModel.swift in Sources */,
-				EE713F052B2FECFC00FCB07C /* ProductsViewModel.swift in Sources */,
+				EE07B3FD2B316ACB0076C4EE /* AlertType.swift in Sources */,
 				EE713EEB2B2FC12F00FCB07C /* ProductsView.swift in Sources */,
 				EE713EED2B2FC13F00FCB07C /* ProductDetailView.swift in Sources */,
 				EE713ED92B2FB78800FCB07C /* StoreAppApp.swift in Sources */,
@@ -273,7 +270,6 @@
 				EE713EFA2B2FDB1700FCB07C /* TabBarItemsPreferenceKey.swift in Sources */,
 				EE713EE92B2FC12200FCB07C /* CategoriesView.swift in Sources */,
 				EE713EF82B2FD72A00FCB07C /* CustomTabBarContainerView.swift in Sources */,
-				EE713F022B2FECE100FCB07C /* CategoriesViewModel.swift in Sources */,
 				EE713EFF2B2FECD100FCB07C /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
